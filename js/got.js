@@ -93,9 +93,3 @@ function find(data, hero) {
 
     console.log(typeof (hero));
 }
-
-function searchBar(data, heroName) {
-
-
-}
-}
