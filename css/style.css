@@ -1,0 +1,35 @@
+body {
+    background-image: url("/assets/site/mapblue.jpg");
+}
+
+#rightBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background-color: grey;
+    float: right;
+}
+
+#main {
+    width: 80%;
+}
+
+.heroes {
+    width: 12%;
+    display: inline-block;
+    text-align: center;
+}
+
+.heroes img {
+    width: 90%;
+}
+
+#searchBar {
+    position: absolute;
+    bottom: 20px;
+    right: 20%;
+    padding: 3%;
+    width: 200px;
+}

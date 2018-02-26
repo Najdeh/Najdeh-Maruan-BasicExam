@@ -12,7 +12,9 @@ function getData(url, callbackFunc) {
 function successAjax(xhttp) {
     // itt a json content, benne a data változóban
     var userDatas = JSON.parse(xhttp.responseText);
-    console.log(userDatas);
+    console.log(userDatas[0].name);
+    createDivs(userDatas)
+
     /*
       Pár sorral lejebb majd ezt olvashatod:
       IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ!
@@ -22,10 +24,78 @@ function successAjax(xhttp) {
       A userDatas NEM GLOBÁLIS változó, ne is tegyétek ki globálisra. Azaz TILOS!
       Ha valemelyik függvényeteknek kell, akkor paraméterként adjátok át.
     */
+
+    var searchBar = document.querySelector('#searchBar');
+
+    searchBar.addEventListener('mouseout', function () {
+        searchBar(userDatas, searchBar.value)
+    });
+
 }
 
 // Írd be a json fileod nevét/útvonalát úgy, ahogy nálad van
-getData('/json/aJsonFileodNeve.json', successAjax);
+getData('/json/characters.json', successAjax);
 
 // Live servert használd mindig!!!!!
 /* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
+
+function createDivs(data) {
+    var main = document.querySelector('#main');
+    sortByNames(data);
+    var div = '';
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].dead != "true") {
+            div += `
+        <div class="heroes" id="${data[i].id}" onclick="find(${data} ,${data[i].id})">
+        <img src="/${data[i].portrait}" alt="a">
+        ${data[i].name}
+        
+        </div>`
+        }
+    }
+    main.innerHTML += div;
+
+}
+
+function sortByNames(data) {
+    for (let i = 0; i < data.length; i++) {
+        for (let j = i + 1; j < data.length; j++)
+            if (data[i].name > data[j].name) {
+                var temp = data[i]
+                data[i] = data[j]
+                data[j] = temp
+            }
+
+    }
+
+}
+
+function evListeners(data) {
+    for (let i = 0; i < data.length; i++) {
+        var hero = document.querySelector('#pre90');
+    }
+}
+
+var bigPic = document.querySelector('#bigPic')
+var heroName = document.querySelector('#heroName')
+var story = document.querySelector('#story')
+
+function find(data, hero) {
+
+    console.log(data[hero]);
+
+    bigPic.innerHTML = `<img src="/${data[hero].picture}" alt="a">`
+
+    for (let i = 0; i < data.length; i++) {
+
+
+    }
+
+    console.log(typeof (hero));
+}
+
+function searchBar(data, heroName) {
+
+
+}
+}
