@@ -1,0 +1,24 @@
+a:
+
+SELECT house, COUNT(id) FROM characters
+WHERE dead = '' AND organization = ''
+GROUP BY house
+ORDER BY COUNT(id) ASC
+LIMIT 8
+
+b:
+
+SELECT * FROM characters
+WHERE dead= '' AND bio LIKE '%hero%'
+
+c:
+
+SELECT * FROM characters
+WHERE organization='nightwatch'
+AND dead = '' 
+AND house=''
+
+d:
+SELECT name AS 'Hero', alias AS 'Nick Name', house AS 'Big House' FROM characters
+WHERE dead='' AND house <> 'Lannister' AND organization <> 'royalguard' AND bio NOT LIKE '%Lannister%' AND
+bio NOT LIKE 'King\'\s Landing'
