@@ -12,7 +12,7 @@ function getData(url, callbackFunc) {
 function successAjax(xhttp) {
     // itt a json content, benne a data változóban
     var userDatas = JSON.parse(xhttp.responseText);
-    console.log(userDatas[0].name);
+
     createDivs(userDatas)
 
     /*
@@ -25,11 +25,7 @@ function successAjax(xhttp) {
       Ha valemelyik függvényeteknek kell, akkor paraméterként adjátok át.
     */
 
-    var searchBar = document.querySelector('#searchBar');
 
-    searchBar.addEventListener('mouseout', function () {
-        searchBar(userDatas, searchBar.value)
-    });
 
 }
 
@@ -38,6 +34,7 @@ getData('/json/characters.json', successAjax);
 
 // Live servert használd mindig!!!!!
 /* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
+
 
 function createDivs(data) {
     var main = document.querySelector('#main');
@@ -92,4 +89,13 @@ function find(data, hero) {
     }
 
     console.log(typeof (hero));
+}
+
+function searchHero(data) {
+    var searchBar = document.querySelector('#searchBar');
+    for (let i = 0; i < data.length; i++) {
+        if (searchBar.value.toLowerCase() == data[i].name.toLowerCase()) {
+
+        }
+    }
 }

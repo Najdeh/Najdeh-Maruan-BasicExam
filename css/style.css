@@ -33,3 +33,11 @@ body {
     padding: 3%;
     width: 200px;
 }
+
+button {
+    position: absolute;
+    bottom: 20px;
+    right: 2%;
+    padding: 3%;
+    width: 50px;
+}
